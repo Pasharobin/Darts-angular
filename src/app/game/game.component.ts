@@ -37,7 +37,6 @@ export class GameComponent implements OnInit {
       this.gameOver = true;
       this.winner = winner;
     }
-    console.log(winner);
   }
 
 }
