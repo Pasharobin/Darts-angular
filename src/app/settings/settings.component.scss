@@ -1,0 +1,21 @@
+ul {
+    margin: 0;
+    padding: 0;
+    li {
+        cursor: pointer;
+    }
+}
+
+p {
+    margin-top: 30px;
+    color: white;
+}
+
+.delete {
+    color: rgba(76, 76, 192, 0.568);
+}
+
+.selected {
+    background-color: rgb(104, 197, 104);
+    color: white;
+}

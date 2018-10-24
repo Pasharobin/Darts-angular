@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <p>Select players</p>
+      <div class="row">
+        <div class="form-group col">
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Search"
+            [(ngModel)]="searchStr"
+          >
+        </div>
+        <div class="form-group col">
+          <button class="btn btn-warning btn-block" (click)="newPlayer()">New player</button>
+        </div>
+      </div>
+      <ul class="list-group col-12">
+        <li 
+          class="list-group-item" 
+          *ngFor="let user of users | search:searchStr ; let i = index"
+          (click)="onSelect(i)"
+          [ngClass]="{selected: user.selected}"
+        >
+          <div class="row">
+            <div class="col-5">
+              {{ user.name }}
+            </div>
+            <div class="col-6">
+              {{ user.email }}
+            </div>
+            <div 
+              class="col-1 text-right delete"
+              (click)="onDelete(i)"
+            ><i class="fas fa-times"></i></div>
+          </div>
+        </li>
+      </ul>
+      <p></p>
+      <button class="btn btn-success btn-lg btn-block" [disabled]="users | noSelected" (click)="start()">Start</button>
+    </div>
+  </div>
+</div>

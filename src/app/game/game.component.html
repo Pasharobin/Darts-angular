@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row justify-content-end">
+    <div class="col-sm-2">
+      <button class="btn btn-warning btn-block" (click)="newGame()">New game</button>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-1 padding">
+      <p>Dart1</p>
+      <p>Dart2</p>
+      <p>Dart3</p>
+    </div>
+    <div class="col-sm-2" *ngFor="let player of players; let i = index">
+      <span>{{ player.name }}</span>
+      <div class="input-group">
+        <input type="text" class="form-control" name="dart1_{{i}}" [(ngModel)]="player.dart1.score">
+        <div class="input-group-append">
+          <div class="btn-group btn-group-toggle">
+            <label class="btn btn-secondary btn-sm" [ngClass]="{active: player.dart1.multiplier == 1}">
+              <input type="radio" name="multiple1_{{i}}" [(ngModel)]="player.dart1.multiplier" [value]="1">1x
+            </label>
+            <label class="btn btn-secondary btn-sm" [ngClass]="{active: player.dart1.multiplier == 2}">
+              <input type="radio" name="multiple1_{{i}}" [(ngModel)]="player.dart1.multiplier" [value]="2">2x
+            </label>
+            <label class="btn btn-secondary btn-sm" [ngClass]="{active: player.dart1.multiplier == 3}">
+              <input type="radio" name="multiple1_{{i}}" [(ngModel)]="player.dart1.multiplier" [value]="3">3x
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="input-group">
+        <input type="text" class="form-control" name="dart2_{{i}}" [(ngModel)]="player.dart2.score">
+        <div class="input-group-append">
+          <div class="btn-group btn-group-toggle">
+            <label class="btn btn-secondary btn-sm" [ngClass]="{active: player.dart2.multiplier == 1}">
+              <input type="radio" name="multiple2_{{i}}" [(ngModel)]="player.dart2.multiplier" [value]="1">1x
+            </label>
+            <label class="btn btn-secondary btn-sm" [ngClass]="{active: player.dart2.multiplier == 2}">
+              <input type="radio" name="multiple2_{{i}}" [(ngModel)]="player.dart2.multiplier" [value]="2">2x
+            </label>
+            <label class="btn btn-secondary btn-sm" [ngClass]="{active: player.dart2.multiplier == 3}">
+              <input type="radio" name="multiple2_{{i}}" [(ngModel)]="player.dart2.multiplier" [value]="3">3x
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="input-group">
+        <input type="text" class="form-control" name="dart3_{{i}}" [(ngModel)]="player.dart3.score">
+        <div class="input-group-append">
+          <div class="btn-group btn-group-toggle">
+            <label class="btn btn-secondary btn-sm" [ngClass]="{active: player.dart3.multiplier == 1}">
+              <input type="radio" name="multiple3_{{i}}" [(ngModel)]="player.dart3.multiplier" [value]="1">1x
+            </label>
+            <label class="btn btn-secondary btn-sm" [ngClass]="{active: player.dart3.multiplier == 2}">
+              <input type="radio" name="multiple3_{{i}}" [(ngModel)]="player.dart3.multiplier" [value]="2">2x
+            </label>
+            <label class="btn btn-secondary btn-sm" [ngClass]="{active: player.dart3.multiplier == 3}">
+              <input type="radio" name="multiple3_{{i}}" [(ngModel)]="player.dart3.multiplier" [value]="3">3x
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-4">
+      <button class="btn btn-warning btn-block btn-lg" (click)="addResults()">Add</button>
+    </div>
+  </div>
+  <hr>
+  <div class="row justify-content-center">
+    <table>
+      <thead>
+        <tr>
+          <th class="counter"></th>
+          <th *ngFor="let player of players">{{ player.name }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of players[0].results; let i = index">
+          <td class="counter">{{ players[0].results.length - i }}</td>
+          <td class="result" *ngFor="let player of players">{{ player.results[i] }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="counter"></td>
+          <td class="footer" *ngFor="let player of players">501</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+<div class="modal-bg" *ngIf="gameOver" (click)="newGame()"></div>
+<div class="modal-msg" [ngClass]="{show: gameOver}">
+  <i class="fas fa-trophy"></i>
+  <h4>The winner is</h4>
+  <h3>{{ winner }}</h3>
+</div>
