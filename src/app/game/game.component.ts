@@ -12,6 +12,7 @@ import { Player } from '../player.model';
 export class GameComponent implements OnInit {
 
   players: Player[] = [];
+  gameMode: number;
   gameOver: boolean = false;
   winner: string = '';
 
@@ -22,6 +23,7 @@ export class GameComponent implements OnInit {
 
   ngOnInit() {
     this.players = this.appService.getPlayers();
+    this.gameMode = this.appService.getGameMode();
   }
   
 

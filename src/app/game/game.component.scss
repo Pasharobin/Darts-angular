@@ -1,8 +1,8 @@
-span, p {
+span, p, h2 {
     color: white;
 }
 
-button {
+button, h2 {
     margin: 30px 0;
 }
 
@@ -76,4 +76,5 @@ table {
 
 i {
     font-size: 30px;
+    margin: 10px 0;
 }

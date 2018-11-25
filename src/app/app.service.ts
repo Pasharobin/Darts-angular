@@ -36,6 +36,14 @@ export class AppService {
     this.users.splice(i, 1);
   }
 
+  getGameMode() {
+    return this.gameMode;
+  }
+
+  changeGameMode(mode) {
+    this.gameMode = mode;
+  }
+
   createPlayers() {
     this.players = this.users.filter(user => user.selected).map(user => new Player(user.name))
   }

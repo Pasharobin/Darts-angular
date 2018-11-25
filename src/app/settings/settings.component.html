@@ -1,5 +1,8 @@
 <div class="container">
   <div class="row justify-content-center">
+    <h1>Darts 501/301</h1>
+  </div>
+  <div class="row justify-content-center">
     <div class="col-sm-8">
       <p>Select players</p>
       <div class="row">
@@ -36,6 +39,11 @@
           </div>
         </li>
       </ul>
+      <p>Choose game</p>
+      <input type="radio" name="mode" id="501" [(ngModel)]="gameMode" [value]="501">
+      <label class="btn mode" for="501">501</label>
+      <input type="radio" name="mode" id="301" [(ngModel)]="gameMode" [value]="301">
+      <label class="btn mode" for="301">301</label>
       <p></p>
       <button class="btn btn-success btn-lg btn-block" [disabled]="users | noSelected" (click)="start()">Start</button>
     </div>

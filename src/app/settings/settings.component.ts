@@ -12,6 +12,7 @@ export class SettingsComponent implements OnInit {
 
   users = [];
   searchStr: string = '';
+  gameMode: number;
 
   constructor(
     private appService: AppService,
@@ -20,6 +21,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     this.users = this.appService.allUsers();
+    this.gameMode = this.appService.getGameMode();
   }
 
   onSelect(i: number) {
@@ -35,6 +37,7 @@ export class SettingsComponent implements OnInit {
   }
 
   start() {
+    this.appService.changeGameMode(this.gameMode);
     this.appService.createPlayers();
     this.router.navigate(['/game']);
   }
